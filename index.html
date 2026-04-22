@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Urban Transport Carbon Emissions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🌍</span>
+        <span class="logo-text">EcoTransit<span class="accent">.</span></span>
+      </div>
+      <nav class="nav-links">
+        <a href="#calculator">Calculator</a>
+        <a href="#compare">Compare</a>
+        <a href="#heatmap">Zones</a>
+        <a href="#charts">Charts</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Urban Transport Carbon Emissions</p>
+      <h1 class="hero-title">Track<br/><em>Every</em><br/>Gram of CO₂</h1>
+      <p class="hero-sub">Real-time emissions analysis for cars, buses, metro, and two-wheelers. Make smarter, greener travel choices.</p>
+      <a href="#calculator" class="cta-btn">Start Calculating ↓</a>
+    </div>
+    <!-- <div class="hero-stats">
+      <div class="stat-card" data-animate>
+        <span class="stat-num" id="stat-total">0</span>
+        <span class="stat-label">Tons CO₂/day (city avg)</span>
+      </div>
+      <div class="stat-card" data-animate>
+        <span class="stat-num" id="stat-saved">0</span>
+        <span class="stat-label">% saved by metro vs car</span>
+      </div>
+      <div class="stat-card" data-animate>
+        <span class="stat-num" id="stat-trips">0</span>
+        <span class="stat-label">Trips analyzed today</span>
+      </div>
+    </div> -->
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="section" id="calculator">
+    <div class="section-label">01 / Emission Calculator</div>
+    <h2 class="section-title">Your Trip Footprint</h2>
+    <div class="calculator-grid">
+      <div class="calc-form card">
+        <div class="form-group">
+          <label>Transport Mode</label>
+          <div class="mode-selector" id="modeSelector">
+            <button class="mode-btn active" data-mode="car">Car</button>
+            <button class="mode-btn" data-mode="bus">Bus</button>
+            <button class="mode-btn" data-mode="metro">Metro</button>
+            <button class="mode-btn" data-mode="bike">Two-Wheeler</button>
+            <button class="mode-btn" data-mode="cycle">Bicycle</button>
+          </div>
+        </div>
+        <div class="form-group" id="fuelGroup">
+          <label>Fuel Type</label>
+          <select id="fuelType">
+            <option value="petrol">Petrol</option>
+            <option value="diesel">Diesel</option>
+            <option value="cng">CNG</option>
+            <option value="electric">Electric</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Distance (km): <span id="distanceVal">10</span> km</label>
+          <input type="range" id="distance" min="1" max="100" value="10" />
+        </div>
+        <div class="form-group">
+          <label>Passengers</label>
+          <input type="number" id="passengers" min="1" max="50" value="1" />
+        </div>
+        <button class="calc-btn" id="calcBtn">Calculate Emissions</button>
+      </div>
+
+      <div class="calc-result card" id="resultCard">
+        <div class="result-header">Emission Result</div>
+        <div class="result-value"><span id="resultCO2">—</span> <span class="result-unit">g CO₂</span></div>
+        <div class="result-equiv" id="resultEquiv"></div>
+        <div class="result-rating" id="resultRating"></div>
+        <canvas id="resultMeter" width="220" height="110"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="section alt-bg" id="compare">
+    <div class="section-label">02 / Mode Comparison</div>
+    <h2 class="section-title">Side-by-Side Emissions</h2>
+    <div class="compare-controls">
+      <label>Distance for comparison:</label>
+      <input type="number" id="compareDistance" value="20" min="1" max="200" /> km
+      <button class="calc-btn small" id="compareBtn">Update Chart</button>
+    </div>
+    <div class="chart-wrapper card">
+      <canvas id="compareChart"></canvas>
+    </div>
+  </section>
+
+  <!-- HEATMAP -->
+  <section class="section" id="heatmap">
+    <div class="section-label">03 / Pollution Zones</div>
+    <h2 class="section-title">High-Emission Zones</h2>
+    <div class="heatmap-wrapper card">
+      <div class="heatmap-legend">
+        <span class="legend-dot low"></span> Low &nbsp;
+        <span class="legend-dot mid"></span> Medium &nbsp;
+        <span class="legend-dot high"></span> High &nbsp;
+        <span class="legend-dot peak"></span> Peak
+      </div>
+      <div class="heatmap-grid" id="heatmapGrid"></div>
+      <div class="heatmap-xaxis" id="heatmapXAxis"></div>
+      <div class="heatmap-info" id="heatmapInfo">Hover a cell for details</div>
+    </div>
+  </section>
+
+  <!-- CHARTS -->
+  <section class="section alt-bg" id="charts">
+    <div class="section-label">04 / Emission Trends</div>
+    <h2 class="section-title">Weekly Emission Trends</h2>
+    <div class="charts-grid">
+      <div class="chart-wrapper card">
+        <h3>Daily CO₂ by Mode (tons)</h3>
+        <canvas id="trendChart"></canvas>
+      </div>
+      <div class="chart-wrapper card">
+        <h3>Mode Share in City Traffic</h3>
+        <canvas id="donutChart"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>EcoTransit &copy; 2026 &mdash; Urban Transport Carbon Emission Dashboard</p>
+    <p class="footer-stack">Built with React.js · Tailwind CSS · Lucide React · JavaScript · JSON · SQL</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
