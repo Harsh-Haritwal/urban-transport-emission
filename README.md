@@ -52,7 +52,7 @@ For the SQL backend:
 
 ---
 
-## 📊 Data Sources (replace with real data)
+## 📊 Data Sources 
 
 - Emission factors: IPCC, Ministry of Road Transport (India), CPCB
 - City zone coordinates: Open Street Map / municipal GIS data
