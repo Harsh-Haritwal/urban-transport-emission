@@ -4,8 +4,6 @@ A full-stack web project analyzing CO₂ emissions from urban transport modes.
 
 ---
 
----
-
 ## 📌 Overview
 
 Urban transportation is one of the major contributors to air pollution and carbon emissions.  
@@ -64,8 +62,6 @@ For the SQL backend:
 1. Run `schema.sql` in PostgreSQL to create tables and views.
 2. Connect your backend (Node.js / Python / etc.) to the database.
 3. Replace static `data.js` values with live API calls as needed.
-
----
 
 ---
 
