@@ -4,6 +4,21 @@ A full-stack web project analyzing CO₂ emissions from urban transport modes.
 
 ---
 
+---
+
+## 📌 Overview
+
+Urban transportation is one of the major contributors to air pollution and carbon emissions.  
+This dashboard provides an interactive platform to calculate and visualize emissions from different transport options such as:
+- Car
+- Bus
+- Metro
+- Two-Wheeler
+- Auto Rickshaw
+Users can compare transport modes, track emissions, and explore environmental impact through charts and smart analytics.
+
+---
+
 ## 📁 File Structure
 
 ```
@@ -49,6 +64,14 @@ For the SQL backend:
 1. Run `schema.sql` in PostgreSQL to create tables and views.
 2. Connect your backend (Node.js / Python / etc.) to the database.
 3. Replace static `data.js` values with live API calls as needed.
+
+---
+
+---
+
+## 🌐 Live Demo
+
+https://ecotransit.netlify.app/
 
 ---
 
