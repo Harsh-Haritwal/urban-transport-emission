@@ -13,6 +13,7 @@ This dashboard provides an interactive platform to calculate and visualize emiss
 - Metro
 - Two-Wheeler
 - Auto Rickshaw
+  
 Users can compare transport modes, track emissions, and explore environmental impact through charts and smart analytics.
 
 ---
